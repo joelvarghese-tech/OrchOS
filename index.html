@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to Orch OS!</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Georgia, sans-serif;
+}
+
+body{
+    background:#17186d;
+    color:#084080;
+    overflow:hidden;
+}
+
+/* Boot Screen */
+
+#boot{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#352c99,#3b99a0,#1d8d7a);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.logo{
+    font-size:60px;
+    color:#17186d;
+    margin-bottom:30px;
+}
+
+.text{
+    margin:8px;
+    font-size:18px;
+}
+
+.bar{
+    width:400px;
+    max-width:80%;
+    height:18px;
+    border:2px solid #17186d;
+    margin-top:25px;
+}
+
+.fill{
+    width:0%;
+    height:100%;
+    background:#b9caf8;
+    animation:load 4s linear forwards;
+}
+
+@keyframes load{
+    from{width:0%;}
+    to{width:100%;}
+}
+
+/* Main Page */
+
+#main{
+    display:none;
+    height:100vh;
+    background:linear-gradient(135deg,#352c99,#3b99a0,#1d8d7a);
+    color:#17186d;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    flex-direction:column;
+}
+
+h1{
+    font-size:65px;
+}
+
+p{
+    margin-top:15px;
+    color:#292d64;
+    font-size:20px;
+}
+
+button{
+    margin-top:35px;
+    padding:15px 35px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:#4f8cff;
+    color:white;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<!-- Replace startup.mp3 with your own sound -->
+<audio id="chime" src="startup.mp3"></audio>
+
+<div id="boot">
+
+<div class="logo"><b>  Orch OS 🎼</b></div>
+
+<div class="text" id="line1">
+<i>Initializing OrchOS...</i>
+</div>
+
+<div class="text" id="line2">
+<i>Loading modules...</i>
+</div>
+
+<div class="text" id="line3">
+<i>Starting interface...</i>
+</div>
+
+<div class="bar">
+<div class="fill"></div>
+</div>
+
+</div>
+
+<div id="main">
+
+<h1>Orch OS</h1>
+
+<p>
+A Clean Minimalistic WebOS Based on Music
+</p>
+
+<button onclick="document.getElementById('chime').play(); setTimeout(() => location.href='home.html', 7000);" style="color:#17186d;display:flex;backdrop-filter:blur(10px);">
+Launch Orch OS →
+</button>
+
+</div>
+
+<script>
+
+// Play startup sound
+window.addEventListener("load", () => {
+    document.getElementById("chime").play().catch(()=>{});
+});
+
+// After 5 seconds, switch screens
+setTimeout(() => {
+
+document.getElementById("boot").style.display="none";
+
+document.getElementById("main").style.display="flex";
+
+},4000);
+
+</script>
+
+</body>
+</html>

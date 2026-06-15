@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<head>
+
+<title>OrchOS</title>
+
+</head>
+
+<style>
+*{
+    font-family:Georgia, sans-serif;
+    margin:0;
+    padding:0;
+}
+</style>
+
+<body style="background-image:url('ChatGPT Image Jun 11, 2026, 06_25_12 PM.png');background-size:cover;background-position:center;height:100vh;overflow:hidden;">
+
+        <div style="display:flex;position:absolute;bottom:15px;left:50%;transform:translateX(-50%);border-radius:10px;padding:10px 25px;backdrop-filter:blur(10px) saturate(130%);background-color:rgba(0,0,0,0.25);color:white;box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.952);">
+
+            <button onclick="openWindow()" style="cursor:pointer;background:none;border:none;">
+
+                <img src="Oot_Ocarina_of_Time.png"
+                    alt="Ocarina of Time"
+                    width="38"
+                    height="40">
+
+            </button>
+
+            
+        </div>
+
+
+        <div style="position:absolute;top:0;left:0;height:20px;width:100%;display:flex;backdrop-filter:blur(10px);background-color:rgba(0,0,0,0.25);color:#ffffff;justify-content:space-between;align-items:center;padding:10px 20px;box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.952);">
+
+            <p style="display:flex;align-items:center;gap:8px;">
+                 <img src="Oot_Ocarina_of_Time.png" alt="Ocarina of Time" width="30" height="30">
+                <b>OrchOS</b>
+            </p>
+
+            <button id="timeElement" style="position:absolute;left: 86%;background-color:rgba(0,0,0,0.25);padding:5px;border-radius:20px;border:none;color:white;">
+                 Loading...
+            </button>
+
+        </div>
+
+        <script>
+
+        function updateTime() {
+
+            var options = {
+                
+                month:'short',
+                day:'numeric',
+                year:'numeric',
+
+                hour:'numeric',
+                minute:'2-digit',
+                
+            };
+
+            var currentTime =
+            new Date().toLocaleString('en-US', options);
+
+            document.getElementById("timeElement").innerHTML =
+            currentTime;
+
+        }
+
+        updateTime();
+
+        setInterval(updateTime,1000);
+
+        </script>
+
+        <script>
+
+function openWindow() {
+
+    var win =
+    document.getElementById("window");
+
+    win.style.display = "block";
+
+    setTimeout(function(){
+
+        win.style.opacity = "1";
+
+        win.style.transform =
+        "translateX(-50%) scale(1)";
+
+    },10);
+
+}
+
+function closeWindow() {
+
+    var win =
+    document.getElementById("window");
+
+    win.style.opacity = "0";
+
+    win.style.transform =
+    "translateX(-50%) scale(0.8)";
+
+    setTimeout(function(){
+
+        win.style.display = "none";
+
+    },250);
+
+}
+
+</script>
+        
+<script src="script.js"></script>
+
+<div id="window" style="
+display:none;
+position:absolute;
+top:20%;
+left:50%;
+transform:translateX(-50%) scale(0.8);
+width:500px;
+padding:20px;
+border-radius:15px;
+backdrop-filter:blur(15px);
+background-color:rgba(0,0,0,0.35);
+color:white;
+box-shadow:0px 4px 15px rgba(0,0,0,0.95);
+opacity:0;
+transition:opacity 0.25s ease, transform 0.25s ease;
+">
+
+    <div id="windowheader" style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+    cursor:move;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(255,255,255,0.2);
+    ">
+
+        <h2>Welcome to OrchOS</h2>
+
+        <button onclick="closeWindow()" style="
+        padding:5px 10px;
+        border:none;
+        border-radius:5px;
+        cursor:pointer;
+        ">
+            ✕
+        </button>
+
+    </div>
+
+    <p>
+        OrchOS is a music-inspired WebOS built using HTML,
+        CSS and JavaScript.
+
+        <br><br>
+
+        Features:
+        <br>
+        🎵 Ocarina-inspired design
+        <br>
+        ⏰ Live clock
+        <br>
+        🪟 Draggable windows
+        <br>
+        🌫️ Glassmorphism UI
+        <br>
+        🚀 Custom boot screen
+    </p>
+
+</div>
+
+<script>
+
+dragElement(
+    document.getElementById("window")
+);
+
+</script>
+
+</body>
+</html>
